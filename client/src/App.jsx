@@ -31,7 +31,7 @@ function App() {
           {/* Contenedor principal de la aplicación con estilos de Tailwind CSS. */}
           <main className="container content-container mx-auto px-10 md:px-0">
             {/* Navbar se muestra en todas las páginas. */}
-            {/*<Navbar />*/}
+            <Navbar />
 
             {/* Routes define las rutas de la aplicación. */}
             <Routes>
