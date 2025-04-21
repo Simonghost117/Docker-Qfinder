@@ -18,11 +18,11 @@ export function Navbar() {
 
   return (
     // Contenedor de la barra de navegación con estilos de Tailwind CSS.
-    <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-lg">
+    <nav className="bg-white my-3 flex justify-between py-5 px-10 rounded-lg">
       
       {/* Título de la aplicación con un enlace. Si el usuario está autenticado, lo redirige a "/tasks", si no, lo lleva a la página de inicio ("/"). */}
-      <h1 className="text-2xl font-bold">
-        <Link to={isAuthenticated ? "/tasks" : "/"}>Task Manager</Link>
+      <h1 className="text-2xl font-bold text-black">
+        <Link to={isAuthenticated ? "/tasks" : "/"}>QfindeR</Link>
       </h1>
 
       {/* Lista de elementos de navegación. */}
