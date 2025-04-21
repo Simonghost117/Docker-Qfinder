@@ -30,21 +30,7 @@ const HomePage = () => {
                 </a>
             </li>
             </nav>
-            <div className="hidden lg:flex gap-x-5">
-            <Link
-                 to="/register"
-                href="#"
-                className="py-1 px-4 text-[16px] mq1200:py-2 mq1200:px-6 bg-white border-azul border-[1px] text-azul uppercase rounded-lg shadow-md mq1200:text-[17px]"
-            >
-                Registrarse
-            </Link>
-            <Link
-                to="/login"
-                className="py-1 px-4 text-[16px] mq1200:py-2 mq1200:px-6 bg-azul text-white uppercase rounded-lg shadow-md mq1200:text-[17px]"
-            >
-                Inicio Sesion
-            </Link>
-            </div>
+            
             <button className="w-7 lg:hidden">
             <img src="/images/menu.png" alt="Icono de menu movil" />
             </button>
