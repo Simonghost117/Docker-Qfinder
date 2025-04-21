@@ -1,3 +1,4 @@
+import './js/slide'
 // Importamos React para poder utilizar la sintaxis JSX y sus funcionalidades.
 import React from 'react'
 
@@ -9,6 +10,8 @@ import App from './App'
 
 // Importamos los estilos globales de la aplicación desde el archivo index.css.
 import './index.css'
+
+
 
 // Seleccionamos el elemento con id "root" en el HTML y lo convertimos en el punto de entrada de la aplicación.
 ReactDOM.createRoot(document.getElementById('root')).render(
