@@ -80,7 +80,7 @@ export function LoginPage() {
             className="w-full bg-cyan-100 text-white px-4 py-2 rounded-md text-black"
             {...register("email", { required: true })} // Validación con react-hook-form
           />
-          <p>{errors.email?.message}</p> {/* Muestra mensaje de error si existe */}
+          <p className="text-red-500">{errors.email?.message}</p> {/* Muestra mensaje de error si existe */}
 
           {/* Campo de Contraseña */}
           <label htmlFor="password" className="text-xs block my-1 text-gray-500">Password:</label>
@@ -91,14 +91,14 @@ export function LoginPage() {
             className="w-full bg-cyan-100 text-white px-4 py-2 rounded-md text-black"
             {...register("password", { required: true, minLength: 6 })} // Validación
           />
-          <p>{errors.password?.message}</p> {/* Muestra mensaje de error si existe */}
+          <p className="text-red-500">{errors.password?.message}</p> {/* Muestra mensaje de error si existe */}
 
           {/* Botón de inicio de sesión */}
           <Button>Login</Button>
         </form>
 
         {/* Enlace para registrarse si el usuario no tiene una cuenta */}
-        <p className="flex gap-x-2 justify-between">
+        <p className="flex gap-x-2 justify-between text-gray-600">
           Don't have an account? <Link to="/register" className="text-sky-500">Sign up</Link>
         </p>
       </div>

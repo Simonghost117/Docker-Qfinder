@@ -44,85 +44,97 @@ function Register() {
   }, [isAuthenticated]); // Se ejecuta cuando cambia el estado de autenticación
 
   return (
-    // Contenedor principal con estilos de Tailwind CSS
-    <div className="h-[calc(100vh-100px)] flex items-center justify-center">
-      {/* Tarjeta contenedora del formulario */}
-      <Card>
-        {/* Muestra mensajes de error en caso de que existan */}
-        {registerErrors.map((error, i) => (
-          <Message message={error} key={i} />
-        ))}
+    <>
+      <div className="shape-container">
+        <svg className="shape-svg" viewBox="0 0 300 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path fill="#0072ff" d="
+            M0,0 
+            C80,150 20,300 100,450 
+            C180,600 0,750 80,900 
+            C160,1050 0,1200 0,1200 
+            L0,1000 
+            L0,0 Z" />
+        </svg>
+      </div>
+      <div className="h-[calc(100vh-100px)] flex items-center justify-center">
+        {/* Tarjeta contenedora del formulario */}
+        <div className="max-w-md w-full p-10 rounded-md bg-white">
+          {/* Muestra mensajes de error en caso de que existan */}
+          {registerErrors.map((error, i) => (
+            <Message message={error} key={i} />
+          ))}
+          <img src="/logo.png" alt="Logo" className="text-center mx-auto mb-4" />
+          {/* Título del formulario */}
+          <h1 className="text-2xl font-bold text-gray-600">Register</h1>
 
-        {/* Título del formulario */}
-        <h1 className="text-3xl font-bold">Register</h1>
+          {/* Formulario de registro */}
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Campo para el nombre de usuario */}
+            <Label htmlFor="username">Username:</Label>
+            <Input
+              type="text"
+              name="username"
+              placeholder="Write your name"
+              {...register("username")}
+              autoFocus
+            />
+            {/* Muestra un mensaje de error si el campo es inválido */}
+            {errors.username?.message && (
+              <p className="text-red-500">{errors.username?.message}</p>
+            )}
 
-        {/* Formulario de registro */}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Campo para el nombre de usuario */}
-          <Label htmlFor="username">Username:</Label>
-          <Input
-            type="text"
-            name="username"
-            placeholder="Write your name"
-            {...register("username")}
-            autoFocus
-          />
-          {/* Muestra un mensaje de error si el campo es inválido */}
-          {errors.username?.message && (
-            <p className="text-red-500">{errors.username?.message}</p>
-          )}
+            {/* Campo para el email */}
+            <Label htmlFor="email">Email:</Label>
+            <Input
+              name="email"
+              placeholder="youremail@domain.tld"
+              {...register("email")}
+            />
+            {/* Muestra un mensaje de error si el campo es inválido */}
+            {errors.email?.message && (
+              <p className="text-red-500">{errors.email?.message}</p>
+            )}
 
-          {/* Campo para el email */}
-          <Label htmlFor="email">Email:</Label>
-          <Input
-            name="email"
-            placeholder="youremail@domain.tld"
-            {...register("email")}
-          />
-          {/* Muestra un mensaje de error si el campo es inválido */}
-          {errors.email?.message && (
-            <p className="text-red-500">{errors.email?.message}</p>
-          )}
+            {/* Campo para la contraseña */}
+            <Label htmlFor="password">Password:</Label>
+            <Input
+              type="password"
+              name="password"
+              placeholder="********"
+              {...register("password")}
+            />
+            {/* Muestra un mensaje de error si el campo es inválido */}
+            {errors.password?.message && (
+              <p className="text-red-500">{errors.password?.message}</p>
+            )}
 
-          {/* Campo para la contraseña */}
-          <Label htmlFor="password">Password:</Label>
-          <Input
-            type="password"
-            name="password"
-            placeholder="********"
-            {...register("password")}
-          />
-          {/* Muestra un mensaje de error si el campo es inválido */}
-          {errors.password?.message && (
-            <p className="text-red-500">{errors.password?.message}</p>
-          )}
+            {/* Campo para confirmar la contraseña */}
+            <Label htmlFor="confirmPassword">Confirm Password:</Label>
+            <Input
+              type="password"
+              name="confirmPassword"
+              placeholder="********"
+              {...register("confirmPassword")}
+            />
+            {/* Muestra un mensaje de error si el campo es inválido */}
+            {errors.confirmPassword?.message && (
+              <p className="text-red-500">{errors.confirmPassword?.message}</p>
+            )}
 
-          {/* Campo para confirmar la contraseña */}
-          <Label htmlFor="confirmPassword">Confirm Password:</Label>
-          <Input
-            type="password"
-            name="confirmPassword"
-            placeholder="********"
-            {...register("confirmPassword")}
-          />
-          {/* Muestra un mensaje de error si el campo es inválido */}
-          {errors.confirmPassword?.message && (
-            <p className="text-red-500">{errors.confirmPassword?.message}</p>
-          )}
+            {/* Botón para enviar el formulario */}
+            <Button>Submit</Button>
+          </form>
 
-          {/* Botón para enviar el formulario */}
-          <Button>Submit</Button>
-        </form>
-
-        {/* Enlace para los usuarios que ya tienen una cuenta */}
-        <p>
-          Already Have an Account?{" "}
-          <Link className="text-sky-500" to="/login">
-            Login
-          </Link>
-        </p>
-      </Card>
-    </div>
+          {/* Enlace para los usuarios que ya tienen una cuenta */}
+          <p className="flex gap-x-2 justify-between text-gray-600">
+            Already Have an Account?{" "}
+            <Link className="text-sky-500" to="/login">
+              Login
+            </Link>
+          </p>
+        </div>
+      </div>
+    </>
   );
 }
 
