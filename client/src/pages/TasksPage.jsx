@@ -26,7 +26,7 @@ export function TasksPage() {
         <div className="flex justify-center items-center p-10">
           <div>
             <ImFileEmpty className="text-6xl text-gray-400 m-auto my-2" />
-            <h1 className="font-bold text-xl">
+            <h1 className="font-bold text-xl text-gray-600">
               No tasks yet, please add a new task
             </h1>
           </div>

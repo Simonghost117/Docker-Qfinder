@@ -15,7 +15,7 @@ export function TaskCard({ task }) {
       {/* Encabezado de la tarjeta con el título y botones de acciones */}
       <header className="flex justify-between">
         {/* Título de la tarea en formato grande y negrita */}
-        <h1 className="text-2xl font-bold">{task.title}</h1>
+        <h1 className="text-2xl font-bold text-gray-700">{task.title}</h1>
 
         {/* Contenedor para los botones de eliminar y editar */}
         <div className="flex gap-x-2 items-center">
@@ -28,7 +28,10 @@ export function TaskCard({ task }) {
       </header>
 
       {/* Descripción de la tarea en un color gris claro */}
-      <p className="text-slate-300">{task.description}</p>
+      <div className="flex flex-wrap">
+
+        <p className="text-gray-600">{task.description}</p>
+      </div>
 
       {/* Muestra la fecha de la tarea formateada si existe */}
       <p>
