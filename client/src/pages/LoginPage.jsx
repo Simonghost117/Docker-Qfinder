@@ -46,35 +46,49 @@ export function LoginPage() {
   }, [isAuthenticated]); // Se ejecuta cuando cambia `isAuthenticated`
 
   return (
+    <>
+    <div className="shape-container">
+      <svg className="shape-svg" viewBox="0 0 300 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path fill="#0072ff" d="
+          M0,0 
+          C80,150 20,300 100,450 
+          C180,600 0,750 80,900 
+          C160,1050 0,1200 0,1200 
+          L0,1000 
+          L0,0 Z" />
+      </svg>
+    </div>
     <div className="h-[calc(100vh-100px)] flex items-center justify-center">
-      <Card>
+      <div className="max-w-md w-full p-10 rounded-md bg-white">
         {/* Muestra mensajes de error en caso de fallos de autenticación */}
         {loginErrors.map((error, i) => (
           <Message message={error} key={i} />
         ))}
         
         {/* Título del formulario */}
-        <h1 className="text-2xl font-bold">Login</h1>
-
+        <img src="/logo.png" alt="Logo" className="text-center mx-auto mb-4" />
+        <h1 className="text-2xl font-bold text-gray-600">Login</h1>
         {/* Formulario de inicio de sesión */}
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Campo de Email */}
-          <Label htmlFor="email">Email:</Label>
-          <Input
+          <label htmlFor="email" className="text-xs block my-1 text-gray-500">Email:</label>
+          <input
             label="Write your email"
             type="email"
             name="email"
             placeholder="youremail@domain.tld"
+            className="w-full bg-cyan-100 text-white px-4 py-2 rounded-md text-black"
             {...register("email", { required: true })} // Validación con react-hook-form
           />
           <p>{errors.email?.message}</p> {/* Muestra mensaje de error si existe */}
 
           {/* Campo de Contraseña */}
-          <Label htmlFor="password">Password:</Label>
-          <Input
+          <label htmlFor="password" className="text-xs block my-1 text-gray-500">Password:</label>
+          <input
             type="password"
             name="password"
             placeholder="Write your password"
+            className="w-full bg-cyan-100 text-white px-4 py-2 rounded-md text-black"
             {...register("password", { required: true, minLength: 6 })} // Validación
           />
           <p>{errors.password?.message}</p> {/* Muestra mensaje de error si existe */}
@@ -87,7 +101,8 @@ export function LoginPage() {
         <p className="flex gap-x-2 justify-between">
           Don't have an account? <Link to="/register" className="text-sky-500">Sign up</Link>
         </p>
-      </Card>
+      </div>
     </div>
+    </>
   );
 }
