@@ -63,7 +63,9 @@ function Register() {
           {registerErrors.map((error, i) => (
             <Message message={error} key={i} />
           ))}
-          <img src="/logo.png" alt="Logo" className="text-center mx-auto mb-4" />
+          <Link to="/">
+            <img src="/logo.png" alt="Logo" className="text-center mx-auto mb-4" />
+          </Link>
           {/* Título del formulario */}
           <h1 className="text-2xl font-bold text-gray-600">Register</h1>
 

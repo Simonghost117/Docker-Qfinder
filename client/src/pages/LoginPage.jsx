@@ -66,7 +66,9 @@ export function LoginPage() {
         ))}
         
         {/* Título del formulario */}
-        <img src="/logo.png" alt="Logo" className="text-center mx-auto mb-4" />
+        <Link to="/">
+          <img src="/logo.png" alt="Logo" className="text-center mx-auto mb-4" />
+        </Link>
         <h1 className="text-2xl font-bold text-gray-600">Login</h1>
         {/* Formulario de inicio de sesión */}
         <form onSubmit={handleSubmit(onSubmit)}>
