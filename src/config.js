@@ -3,4 +3,4 @@ export const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/qfinder-notas";
 export const TOKEN_SECRET = process.env.TOKEN_SECRET || "secret";
 
-export const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5174";
+export const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
