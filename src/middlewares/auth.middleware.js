@@ -1,23 +1,33 @@
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET } from "../config.js";
+import User from "../models/user.model.js";
 
-export const auth = (req, res, next) => {
+export const auth = async (req, res, next) => {
   try {
     const { token } = req.cookies;
+    if (!token) {
+      return res.status(401).json({ 
+        success: false,
+        error: "Acceso denegado: No se proporcionó token" 
+      });
+    }
 
-    if (!token)
-      return res
-        .status(401)
-        .json({ message: "No token, authorization denied" });
+    const decoded = jwt.verify(token, TOKEN_SECRET);
+    const user = await User.findById(decoded.id).select("-password");
+    
+    if (!user) {
+      return res.status(401).json({ 
+        success: false,
+        error: "Usuario no encontrado" 
+      });
+    }
 
-    jwt.verify(token, TOKEN_SECRET, (error, user) => {
-      if (error) {
-        return res.status(401).json({ message: "Token is not valid" });
-      }
-      req.user = user;
-      next();
-    });
+    req.user = user;
+    next();
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    res.status(401).json({ 
+      success: false,
+      error: "Token inválido o expirado" 
+    });
   }
 };

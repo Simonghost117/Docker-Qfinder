@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  mongo:
+    container_name: dbqfinder
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: auth-db
+    networks:
+      - app-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 30s
+      retries: 5
+  backend:
+    container_name: backend-qfinder
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/auth-db
+      TOKEN_SECRET: your_secure_secret_here
+      FRONTEND_URL: http://localhost
+    networks:
+      - app-network
+    depends_on:
+      mongo:
+        condition: service_healthy
+  frontend:
+    container_name: frontend-qfinder
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+volumes:
+  mongo-data:
+networks:
+  app-network:
+    driver: bridge
